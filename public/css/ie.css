@@ -1,0 +1,17 @@
+body { min-width: 1170px;}
+.socials li a { behavior:url(js/PIE.htc); position:relative;}
+
+.shadow span { behavior:url(js/PIE.htc); }
+
+.magnifier:hover img {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=40);}
+#contact-form ._placeholder {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);}
+#contact-form ._placeholder.focused {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=40);}
+.box-1 .abs span {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);}
+.box-1 .abs:hover span {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);}
+
+.text-3 {
+	/*width:             286px;*/
+     /*height:            28px;*/
+	/*-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.9961946980917454, M12=0.08715574274765876, M21=-0.08715574274765876, M22=0.9961946980917454, SizingMethod='auto expand')";*/
+   
+}

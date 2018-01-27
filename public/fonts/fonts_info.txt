@@ -1,0 +1,8 @@
+List of Fonts used in template 
+
+
+
+Dorsa		http://www.google.com/fonts/specimen/Dorsa
+Open Sans	http://www.google.com/fonts/specimen/Open+Sans
+
+

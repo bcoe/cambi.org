@@ -343,7 +343,11 @@ header {
 }
 .logo h1 {
   text-align: center;
+  font-size: 42pt;
+  text-align: center;
+  color: white;
 }
+
 .logo:after {
   position: absolute;
   content: "";
@@ -1148,6 +1152,10 @@ dl.address dd span {
   #contact-form.success .success-message {
     padding: 93px 0;
   }
+  
+  .logo h1 {
+    font-size: 24pt;
+  }
 }
 @media only screen and (max-width: 479px) {
   h1 img {
@@ -1207,4 +1215,8 @@ dl.address dd span {
   .slider .camera_wrap {
     height: 150px;
   }
+  
+  .logo h1 {
+    font-size: 16pt;
+  }  
 }

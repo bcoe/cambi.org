@@ -4,6 +4,8 @@
   "description": "a celebration of the life of Cambi Evers-Everette (Coe)",
   "main": "index.js",
   "scripts": {
+    "build": "node-sass ./public/css/index.scss > ./public/css/index.css",
+    "prestart": "npm run build",
     "start": "node index.js",
     "test": "standard",
     "release": "standard-version"
@@ -29,6 +31,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "mailchimp-api-v3": "^1.8.0",
+    "node-sass": "^4.7.2",
     "yargs": "^11.0.0"
   },
   "devDependencies": {

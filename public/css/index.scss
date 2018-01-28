@@ -1,0 +1,128 @@
+@mixin gradient($from, $to) {
+  background-color: $from;
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #666;
+}
+
+body > header {
+    background-color: #351254;
+    color: white;
+    font-family: 'Cinzel Decorative', cursive;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    .wrapper {
+        max-width: 1200px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .header-left {
+        width: 50%;
+        text-align: left;
+        font-size: 3em;
+    }
+    .header-right {
+        width: 50%;
+        text-align: right;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1rem;
+    }
+}
+
+content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    @include gradient(#351254, #ddd);
+}
+
+pane {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 1em;
+    &.connected {
+        background-color: white;
+        border-radius: 3px;
+    }
+    item {
+        border-radius: 3px;
+        background-color: white;
+        padding: 1rem;
+        &:first-child {
+            margin-left: 0;
+        }
+        margin-left: 1rem;
+        divider {
+            height: 1px;
+            display: block;
+            width: 100%;
+            background-color: #ddd;
+            margin: 1em 0;
+        }
+        header {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.5em;
+            color: #000;
+        }
+    }
+}
+
+pane.grid-2 {
+    item:nth-child(1) {
+        width: 70.5%;
+        img {
+            width: 100%;
+        }
+    }
+    item:nth-child(2) {
+        width: 33%;
+    }
+}
+
+pane.grid-3 {
+    item:nth-child(1) {
+        width: 33%;
+    }
+    item:nth-child(2) {
+        width: 33%;
+    }
+    item:nth-child(3) {
+        width: 33%;
+    }
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}

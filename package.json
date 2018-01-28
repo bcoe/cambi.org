@@ -8,7 +8,8 @@
     "prestart": "npm run build",
     "start": "node index.js",
     "test": "standard",
-    "release": "standard-version"
+    "release": "standard-version",
+    "watch": "./node_modules/.bin/watch 'npm run build' ./public/css/"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "express": "^4.16.2",
     "mailchimp-api-v3": "^1.8.0",
     "node-sass": "^4.7.2",
+    "watch": "^1.0.2",
     "yargs": "^11.0.0"
   },
   "devDependencies": {

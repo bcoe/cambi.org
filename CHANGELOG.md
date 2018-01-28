@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/bcoe/cambi.org/compare/v1.1.0...v1.2.0) (2018-01-28)
+
+
+### Features
+
+* landing [@gsilk](https://github.com/gsilk)'s fairly major redesign ([#5](https://github.com/bcoe/cambi.org/issues/5)) ([355fa05](https://github.com/bcoe/cambi.org/commit/355fa05))
+
+
+
 <a name="1.1.0"></a>
 # 1.1.0 (2018-01-28)
 

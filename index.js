@@ -8,7 +8,7 @@ const Mailchimp = require('mailchimp-api-v3')
 const mailchimp = new Mailchimp(process.env.MAILCHIMP)
 
 app.use(bodyParser.urlencoded({
-  eextended: true
+  extended: true
 }))
 app.use(express.static('public'))
 

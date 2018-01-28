@@ -39,6 +39,9 @@ a[href^="tel:"] {
 ul li a {
   transition: all 0.4s ease;
 }
+form {
+  margin-top: 10px;
+}
 h1,
 h2,
 h3,
@@ -912,6 +915,9 @@ dl.address dd span {
   padding: 12px 7px 12px 16px;
   margin: 0px;
   resize: none;
+}
+label {
+  display: block;
 }
 .form_buttons a {
   margin-top: 23px;

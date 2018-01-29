@@ -65,7 +65,6 @@ body {
   flex-direction: column;
   color: $bodyFontColor;
   background: url('../images/349_1.png') top left repeat-x,
-              url('../images/223.png') top left repeat-x,
               url('../images/821.png') top center repeat-x,
               url('../images/563.png') top left repeat,
               url('../images/659.png') top center repeat-x,
@@ -567,10 +566,8 @@ footer:before {
   left: -50%;
   z-index: -1;
   background:   url('../images/349_1.png') top left repeat-x,
-                url('../images/223.png') top left repeat-x,
                 url('../images/821.png') top center repeat-x,
                 url('../images/563.png') top left repeat-x,
                 url('../images/659.png') top center repeat-x;//,
-                //linear-gradient(darken($purple,2%), rgba($purple,0));
   transform: rotate(180deg);
 }

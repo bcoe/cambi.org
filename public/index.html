@@ -10,11 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <script src="js/jquery-slideshow-1.0.7.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $('#slideshow').slideShow();
-      });
-    </script>
+    <script src="js/index.js"></script>
   </head>
   <body>
     <header>
@@ -87,11 +83,17 @@
             Subscribe for invites to future events celebrating the life of Cambi Evers-Everette and for updates
             regarding ongoing charity work in Cambi's name.
           </p>
-          <form action="/subscribe" method="post">
+          <form action="/subscribe" method="post" id="subscribe">
             <label for="email">Email</label>
             <input type="text" name="email" id="email" />
             <input type="submit" value="subscribe" />
           </form>
+          <div id="error" class="hidden">
+          
+          </div>
+          <div id="success" class="hidden">
+            You're subscribed!
+          </div>
         </item>
       </pane>
     </content>

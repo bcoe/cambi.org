@@ -13,7 +13,7 @@
     "test": "standard",
     "release": "standard-version",
     "watch": "watch 'npm run build' ./lib ./public/css --filter=./lib/filter.js --interval=1",
-    "browser-sync": "browser-sync start --proxy='localhost:3000' --files 'public/css/*.css' 'public/js/*.js'"
+    "browser-sync": "browser-sync start --proxy='localhost:3000' --files 'public/css/*.css' 'public/js/*.js' 'public/*.html'"
   },
   "repository": {
     "type": "git",

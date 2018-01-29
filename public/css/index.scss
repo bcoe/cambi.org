@@ -70,10 +70,6 @@ body {
               url('../images/563.png') top left repeat,
               url('../images/659.png') top center repeat-x,
               linear-gradient(darken($purple,2%), #ffebda);
-              //linear-gradient(darken($purple,2%), $lightPurple);
-  //background-attachment: fixed;
-  //background-position: left top;
-  //@include gradient($purple, #ddd);
 }
 
 body > header {
@@ -142,11 +138,11 @@ body > header {
       //font-size: 1.1rem; Default
       margin-top: -.5rem;
     }
-    &::first-line {
-      @include respond-to(small){
-        line-height: 1.72;
-      }
-    }
+    // &::first-line {
+    //   @include respond-to(small){
+    //     line-height: 1.72;
+    //   }
+    // }
     @include respond-to(medium){
       font-size: 1.2rem;
       margin-top: -.75rem;

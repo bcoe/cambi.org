@@ -177,6 +177,7 @@ pane.grid-2 {
     box-sizing: border-box;
   }
   .slideshow-container {
+    display: block;
     @include respond-to(large){
       width: 66%;
       img {
@@ -185,9 +186,9 @@ pane.grid-2 {
     }
   }
   .info-container {
+    display: block;
     padding: 1rem;
       @include respond-to(large) {
-        display: block;
         width: 33%;
       }
   }

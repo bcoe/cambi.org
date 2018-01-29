@@ -139,6 +139,11 @@ body > header {
       font-size: 1.1rem;
       margin-top: -.5rem;
     }
+    &::first-line {
+      @include respond-to(small){
+        line-height: 1.72;
+      }
+    }
     @include respond-to(medium){
       font-size: 1.2rem;
       margin-top: -.75rem;
@@ -342,6 +347,10 @@ pane.grid-2 {
 
 .signup {
   background: linear-gradient(lighten($lightPurple, 10%),white);
+}
+
+.btn {
+  font-weight: 400;
 }
 
 p {

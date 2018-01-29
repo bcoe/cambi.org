@@ -1,4 +1,6 @@
+// normailize.css fixes user agent stylesheets for annoying things like buttons, margins, etc
 @import "normalize";
+@import "flickity.min";
 
 @mixin gradient($from, $to) {
   background-color: $from;
@@ -20,21 +22,21 @@
   }
 }
 
-//FONTS//
+// FONTS //
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400|Raleway|Sanchez');
 
-//$baseFont: 'Open Sans','Helvetica Neue', 'Helvetica', sans-serif;
 $baseFont: 'Montserrat','Helvetica Neue', 'Helvetica', sans-serif;
 $headingFont: 'Sacramento','Cinzel Decorative', cursive;
 
-//COLORS//
+// COLORS //
 $purple: #351254;
 $bodyFontColor: #666;
 
 $break-small: 600px;
 $break-large: 1024px;
 
+// MEDIA QUERIES //
 @mixin respond-to($media) {
   @if $media == small {
     @media only screen and (max-width: $break-small) { @content; }
@@ -64,6 +66,9 @@ body {
 
 body > header {
   padding: 1rem 0 1rem 0;
+  @include respond-to(medium){
+    padding: 1rem 0 .5rem 0;
+  }
   color: white;
   text-align: center;
   justify-content: center;
@@ -72,12 +77,12 @@ body > header {
   h1 {
     font-family: $headingFont;
     @include respond-to(small){
-      font-size: 1rem;
-      line-height: .75rem;
+      font-size: 2.4rem;
+      line-height: 1rem;
     }
     @include respond-to(medium){
-      font-size:2rem;
-      line-height: 2.5rem;
+      font-size: 3rem;
+      line-height: 1rem;
     }
     @include respond-to(large){
       font-size: 4rem;
@@ -87,7 +92,7 @@ body > header {
 
   h2 {
     @include respond-to(small){
-      font-size: .5rem;
+      font-size: 1rem;
       line-height: .5rem;
     }
     @include respond-to(medium){
@@ -106,12 +111,28 @@ body > header {
 
   .top {
     text-transform: uppercase;
+    @include respond-to(small){
+      line-height: .5rem;
+      letter-spacing: .05rem;
+    }
+    @include respond-to(medium){
+      line-height: .5rem;
+      letter-spacing: .05rem;
+    }
     @include respond-to(large){
       line-height: .5rem;
       letter-spacing: .1rem;
     }
   }
   .bottom {
+    @include respond-to(small){
+      font-size: 1.1rem;
+      margin-top: -.5rem;
+    }
+    @include respond-to(medium){
+      font-size: 1.2rem;
+      margin-top: -.75rem;
+    }
     @include respond-to(large){
       font-size: 1.25rem;
       margin-top: -1rem;
@@ -127,7 +148,9 @@ content {
   align-items: center;
   width: 100%;
   @include respond-to(large){
-    width: 80rem;
+    //width: 80rem; // FIXED
+    max-width: 80rem; // FLUID
+    margin: 0 5% 0 5%;
   }
 }
 
@@ -154,10 +177,17 @@ pane {
     flex-direction: column;
     background-color: white;
     padding: 1rem;
+    @include respond-to(small){
+      padding: 1rem 1rem 2rem 1rem;
+    }
     header {
       font-family: $headingFont;
       color: #000;
       text-align: center;
+      @include respond-to(small){
+        padding: 2rem 0 1rem 0;
+        font-size: 2.5rem;
+      }
       @include respond-to(large){
         padding: 2rem 0 1rem 0;
         font-size: 3rem;
@@ -172,9 +202,11 @@ pane {
     }
     p {
       text-align: center;
-      @include respond-to(large){
-        max-width: 23rem;
-      }
+      max-width: 23rem;
+
+      // @include respond-to(large){
+      //   max-width: 23rem;
+      // }
     }
   }
   item.purple {
@@ -221,6 +253,7 @@ pane.grid-2 {
       @include respond-to(large) {
         padding: 3rem 0 0 0;
         font-size: 3rem;
+        line-height: 3rem;
       }
     }
 
@@ -233,16 +266,18 @@ pane.grid-2 {
     }
 
     p {
+      @include respond-to(medium){
+        max-width: 32rem;
+      }
       @include respond-to(large){
         max-width: 23rem;
       }
-      max-width: 32rem;
     }
 
     .heart {
       @include respond-to(small){
-        padding: 2rem;
-        height: 6rem;
+        padding: 1rem;
+        height: 5rem;
       }
       @include respond-to(medium){
         padding: 2rem;
@@ -256,18 +291,6 @@ pane.grid-2 {
   }
 }
 
-// .grid-3 {
-//   :nth-child(1){
-//     @include respond-to(large){
-//       margin-right:.5rem;
-//     }
-//   }
-//   :nth-child(2){
-//     @include respond-to(large){
-//       margin-left:.5rem;
-//     }
-//   }
-// }
 
 
 .grid-3 {
@@ -284,7 +307,13 @@ pane.grid-2 {
         margin-left:1rem;
       }
   }
+  @include respond-to(small){
+    :nth-child(2) {
+        padding-bottom: 4rem;
+      }
+  }
 }
+
 
 
 p {
@@ -299,13 +328,12 @@ p {
 a.donate {
   display: inline-block;
   margin: 1rem 0 1rem 0;
-  padding: 16px 38px 16px 38px;// 75px;
+  padding: 16px 38px 16px 38px;
   border-radius: 2rem;
-  background: white;// url(https://d1iczxrky3cnb2.cloudfront.net/red_logo.png) no-repeat 37px center;
+  background: white;
   color: $purple;
   font-family: $baseFont;
   font-size: 16px;
-  //font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -322,17 +350,26 @@ form#subscribe {
     margin: 0rem 0 1rem 0;
     height: 2rem;
     width: 80%;
-    border-radius: 1rem;
+    border-radius: .25rem;
     background: white;
-    border: solid 1px $purple;
+    border: solid 1px #333;
+    box-shadow: none;
+    -webkit-appearance: none;
+    font-family: $baseFont;
     font-size: 1rem;
-    padding: 0 1rem 0 1rem;
+    padding: 0 .5rem 0 .5rem;
     @include respond-to(large){
-      width: 60%;// 75px;
+      width: 60%;
+    }
+    &:focus{
+      border: solid 1px $purple;
+      outline: solid 1px $purple;
     }
   }
 
   input[type=email]::placeholder {
+    padding-top: .1rem;
+    font-weight: 300;
     text-align: center;
     &::focus {
        opacity: 0;
@@ -361,7 +398,8 @@ form#subscribe {
 
 }
 
-// CAROUSEL //
+
+//// FLIKITY CAROUSEL ////
 #carousel {
   @include respond-to(small){
     width: 100%;
@@ -378,11 +416,86 @@ form#subscribe {
   }
 }
 
-.flickity-page-dots {
-  display: none;
-  //bottom: 10px;
+.carousel-cell, .carousel-cell-image {
+  // width: 100%;
+  @include respond-to(small){
+    width: 100%;
+  }
+  @include respond-to(medium){
+    width: 100%;
+    margin-top: calc(-1 * 5vw);
+  }
+  @include respond-to(large){
+    height: 105%;
+  }
 }
 
-.carousel-cell, .carousel-cell-image {
-  width: 100%;
+// Adjust dot position
+.flickity-page-dots {
+  bottom: 1rem;
+  // @include respond-to(medium){
+  //   display: none;
+  // }
+  // @include respond-to(large){
+  //   display: none;
+  // }
+}
+
+.flickity-page-dots .dot {
+  height: .5rem;
+  width: .5rem;
+  //margin: 0;
+  border-radius: .5rem;
+  background: rgba(255,255,255,.5);
+}
+
+// Fill-in selected dot
+.flickity-page-dots .dot.is-selected {
+  background: rgba(255,255,255,.8);
+}
+
+// Style < > buttons
+.flickity-prev-next-button,
+.flickity-prev-next-button:focus {
+  width: 2rem;
+  height: 6rem;
+  background: rgba(255,255,255,.2);
+  @include respond-to(small){
+    width: 1.5rem;
+    height: 4rem;
+  }
+  &.previous {
+    @include respond-to(small){
+      border-radius: 0 .5rem .5rem 0;
+    }
+    border-radius: 0 1rem 1rem 0;
+  }
+  &.next {
+    @include respond-to(small){
+      border-radius: .5rem 0 0 .5rem;
+    }
+    border-radius: 1rem 0 0 1rem;
+  }
+  &:hover {
+    background: rgba(255,255,255,.5)
+  }
+  &:active {
+    background: rgba(255,255,255,.8)
+  }
+}
+
+// Arrow color
+.flickity-prev-next-button .arrow {
+  fill: white;
+}
+.flickity-prev-next-button.no-svg {
+  color: white;
+}
+
+// Position buttons
+.flickity-prev-next-button.previous {
+  left: 0px;
+}
+.flickity-prev-next-button.next {
+  right: 0px;
 }

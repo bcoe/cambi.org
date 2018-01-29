@@ -70,6 +70,14 @@ body {
               url('../images/563.png') top left repeat,
               url('../images/659.png') top center repeat-x,
               linear-gradient(darken($purple,2%), #ffebda);
+  @include respond-to(small){
+    background: url('../images/349_1.png') top left -8rem repeat-x,
+                url('../images/223.png') top left 8rem repeat-x,
+                url('../images/821.png') top center repeat-x,
+                url('../images/563.png') top left 8rem repeat,
+                url('../images/659.png') top center repeat-x,
+                linear-gradient(darken($purple,2%), #ffebda);
+  }
 }
 
 body > header {
@@ -561,7 +569,7 @@ footer {
   overflow-y: hidden;
   //margin: 0;
   p {
-    color: adjust-hue($purple, 90deg);
+    color: #914500;//adjust-hue($purple, 90deg);
     font-family: $headingFont;
     font-size: 1.25rem;
     font-weight: 400;

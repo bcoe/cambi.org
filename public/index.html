@@ -6,6 +6,7 @@
     <meta name = "format-detection" content = "telephone=no" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/flickity.min.css">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="js/combined.min.js"></script>
@@ -24,24 +25,20 @@
     </header>
     <content>
       <pane class="grid-2 connected">
-        <item class="slideshow-container">
-          <div id="slideshow">
-            <ul class="slides">
-              <li class="slide">
-                <img src="images/cambi-party-01.jpg" border="0" alt="Cambi Getting Ready for Wedding" />
-              </li>
-              <li class="slide">
-                <img src="images/cambi-child-01.jpg" border="0" alt="Cambi and Nicole" />
-              </li>
-              <li class="slide">
-                <img src="images/cambi-fashion-01.jpg" border="0" alt="Cambi Looking Fabulous" />
-              </li>
-              <li class="slide">
-                <img src="images/cambi-strength-01.jpg" border="0" alt="Cambi and Nicole" />
-              </li>
-            </ul>
+        <div id="carousel">
+          <div class="carousel-cell">
+            <img class="carousel-cell-image" src="images/cambi-party-01.jpg" alt="Cambi Getting Ready for Wedding" />
           </div>
-        </item>
+          <div class="carousel-cell">
+            <img class="carousel-cell-image" src="images/cambi-child-01.jpg" alt="Cambi and Nicole" />
+          </div>
+          <div class="carousel-cell">
+            <img class="carousel-cell-image" src="images/cambi-strength-01.jpg" alt="Cambi and Nicole" />
+          </div>
+          <div class="carousel-cell">
+            <img class="carousel-cell-image" src="images/cambi-fashion-01.jpg" alt="Cambi Looking Fabulous" />
+          </div>
+        </div>
         <item class="info-container">
           <header>Celebration Details</header>
           <divider></divider>
@@ -76,7 +73,7 @@
             regarding ongoing charity work in Cambi's name.
           </p>
           <form action="/subscribe" method="post" id="subscribe">
-            <input type="email" name="email" id="email" placeholder="yourname@email.com" />
+            <input type="email" name="email" id="email" placeholder="yourname@email.com" autocomplete="off" />
             <input type="submit" value="subscribe" id="submit" disabled />
           </form>
           <div id="error" class="hidden">

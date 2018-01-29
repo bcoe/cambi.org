@@ -6,7 +6,7 @@
   "scripts": {
     "build-css": "node-sass ./public/css/index.scss > ./public/css/index.css",
     "build-js": "browserify ./lib/index.js -o ./public/js/combined.js",
-    "uglify": "uglifyjs --compress --mangle -o ./public/js/combined.min.js -- ./public/js/combined.js",
+    "uglify": "./node_modules/.bin/uglifyjs --compress --mangle -o ./public/js/combined.min.js -- ./public/js/combined.js",
     "build": "npm run build-css && npm run build-js && npm run uglify",
     "prestart": "npm run build",
     "start": "node index.js",

@@ -1,3 +1,5 @@
+@import "normalize";
+
 @mixin gradient($from, $to) {
   background-color: $from;
   background-image: -moz-linear-gradient($from, $to);
@@ -17,6 +19,10 @@
     box-shadow: $top $left $blur $color;
   }
 }
+
+//FONTS//
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+$baseFont: 'Helvetica Neue', 'Helvetica', sans-serif;
 
 //COLORS//
 $purple: #351254;
@@ -76,29 +82,33 @@ body > header {
     //     font-size: 1rem;
     // }
     h1 {
-      font-family: 'Cinzel Decorative', cursive;
-      font-size: 1rem;
-      line-height: .75rem;
+      font-family: 'Sacramento','Cinzel Decorative', cursive;
+      @include respond-to(medium){
+        font-size: 1rem;
+        line-height: .75rem;
+      }
       @include respond-to(medium){
         font-size:2rem;
         line-height: 2.5rem;
       }
       @include respond-to(large){
         font-size: 3rem;
-        line-height: 2rem;
+        line-height: 1rem;
       }
     }
 
     h2 {
-      font-size: .5rem;
-      line-height: .5rem;
+      @include respond-to(small){
+        font-size: .5rem;
+        line-height: .5rem;
+      }
       @include respond-to(medium){
-        font-size:2rem;
-        line-height: 2.5rem;
+        font-size:1rem;
+        line-height: 1rem;
       }
       @include respond-to(large){
         font-size: 1rem;
-        line-height: 1.5rem;
+        line-height: 1rem;
       }
     }
     .top {
@@ -115,6 +125,9 @@ content {
   justify-content: center;
   align-items: center;
   width: 100%;
+  @include respond-to(large){
+    width: 80rem;
+  }
 }
 
 pane {
@@ -131,26 +144,29 @@ pane {
   width: 100%;
   &.connected {
     background-color: white;
-    border-radius: 3px;
+    border-radius: .5rem;
   }
   item {
     display: flex;
   }
-  &.grid-3 item {
+  // &.grid-3 item {
+  item {
       align-items: center;
       flex-direction: column;
       background-color: white;
       padding: 1rem;
       divider {
           height: 1px;
-          display: block;
+          //display: block;
+          display: none;
           width: 100%;
           background-color: #ddd;
           margin: 1rem 0;
       }
       header {
-          font-family: 'Cinzel Decorative', cursive;
-          font-size: 1.5em;
+          padding: .5rem 0 .5rem 0;
+          font-family: 'Sacramento','Cinzel Decorative', cursive;
+          font-size: 2rem;
           color: #000;
           text-align: center;
       }
@@ -173,6 +189,9 @@ pane.grid-2 {
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: flex-start;
+  @include respond-to(large){
+    margin-bottom: 2rem;
+  }
   &>* {
     box-sizing: border-box;
   }
@@ -186,11 +205,32 @@ pane.grid-2 {
     }
   }
   .info-container {
-    display: block;
+    display: flex;
+    flex-grow: 1;
+    align-content: center;
     padding: 1rem;
+    @include respond-to(large) {
+      width: 33%;
+      padding: 2rem 2rem 0rem 1rem;
+    }
+
+    header {
       @include respond-to(large) {
-        width: 33%;
+        font-size: 3rem;
       }
+    }
+
+    divider {
+      @include respond-to(large) {
+        display: inline-block;
+        margin: 0rem 0 1.5rem 0;
+        width: 50%;
+      }
+    }
+
+    p {
+      max-width: 32rem;
+    }
   }
 }
 
@@ -199,25 +239,25 @@ p {
   margin-bottom: 1em;
 }
 
-#slideshow ul {
-  margin: 0px;
-  padding: 0px;
-  list-style-type: none;
-}
-
-#slideshow img {
-  width: 100%;
-  @include respond-to(large){
-    width: 800px;
-  }
-}
-
-#slideshow {
-  @include respond-to(large){
-    width: 850px;
-    height: 650px;
-  }
-}
+// #slideshow ul {
+//   margin: 0px;
+//   padding: 0px;
+//   list-style-type: none;
+// }
+//
+// #slideshow img {
+//   width: 100%;
+//   @include respond-to(large){
+//     width: 800px;
+//   }
+// }
+//
+// #slideshow {
+//   @include respond-to(large){
+//     width: 850px;
+//     height: 650px;
+//   }
+// }
 
 .hidden {
   display: none;
@@ -230,6 +270,7 @@ a.donate {
   border-radius: 2rem;
   background: white;// url(https://d1iczxrky3cnb2.cloudfront.net/red_logo.png) no-repeat 37px center;
   color: $purple;
+  font-family: $baseFont;
   font-size: 16px;
   //font-weight: bold;
   text-decoration: none;
@@ -245,12 +286,13 @@ form#subscribe {
   input[type=email]{
     display: inline-block;
     margin: 1rem 0 1rem 0;
-    width: 90%;// 75px;
+    width: 80%;// 75px;
     height: 2rem;
     border-radius: 1rem;
     background: white;
     border: solid 1px $purple;
     font-size: 1rem;
+    padding: 0 1rem 0 1rem;
   }
 
   input[type=email]::placeholder {
@@ -269,6 +311,7 @@ form#subscribe {
     border-radius: 2rem;
     background: $purple;
     color: white;
+    font-family: $baseFont;
     font-size: 16px;
     //font-weight: bold;
     text-decoration: none;
@@ -277,9 +320,37 @@ form#subscribe {
     border: none;
     cursor: pointer;
   }
+
+  input:disabled, input[disabled] {
+    opacity: .2;
+  }
+
 }
 
+//CAROUSEL
 #carousel {
-  width: 900px;
-  height: 700px;
+  @include respond-to(small){
+    width: 100%;
+    height: 16rem;
+  }
+  @include respond-to(medium){
+    width: 100%;
+    height: 32rem;
+  }
+  @include respond-to(large){
+    margin: 1rem;
+    width: calc(66% - 2rem);
+    height: 36rem;
+  }
+  // width: 900px;
+  // height: 700px;
+}
+
+.flickity-page-dots {
+  display: none;
+  //bottom: 10px;
+}
+
+.carousel-cell, .carousel-cell-image {
+  width: 100%;
 }

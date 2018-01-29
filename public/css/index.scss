@@ -24,14 +24,17 @@
 
 // FONTS //
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400|Raleway|Sanchez');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400|Raleway');
 
 $baseFont: 'Montserrat','Helvetica Neue', 'Helvetica', sans-serif;
-$headingFont: 'Sacramento','Cinzel Decorative', cursive;
+$headingFont: 'Sacramento','Cinzel Decorative', cursive, serif;
 
 // COLORS //
 $purple: #351254;
-$bodyFontColor: #666;
+$lightPurple: #e0bdff;
+$bodyFontColor: #666666;
+$lightGrey: #dddddd;
+$darkColor: #16161d;
 
 $break-small: 600px;
 $break-large: 1024px;
@@ -61,7 +64,15 @@ body {
   align-items: center;
   flex-direction: column;
   color: $bodyFontColor;
-  @include gradient($purple, #ddd);
+  background: url('../images/349_1.png') top left repeat-x,
+              url('../images/223.png') top left repeat-x,
+              url('../images/821.png') top center repeat-x,
+              url('../images/563.png') top left repeat,
+              url('../images/659.png') top center repeat-x,
+              linear-gradient(darken($purple,2%), $lightPurple);
+  //background-attachment: fixed;
+  //background-position: left top;
+  //@include gradient($purple, #ddd);
 }
 
 body > header {
@@ -149,8 +160,10 @@ content {
   width: 100%;
   @include respond-to(large){
     //width: 80rem; // FIXED
-    max-width: 80rem; // FLUID
-    margin: 0 5% 0 5%;
+    max-width: 78rem; // FLUID
+    //max-width: calc(100vw - 8rem); // FLUID
+    //margin: 0 5% 0 5%;
+
   }
 }
 
@@ -176,15 +189,23 @@ pane {
     align-items: center;
     flex-direction: column;
     background-color: white;
+    //background: linear-gradient(lighten($lightPurple, 10%),white);
     padding: 1rem;
     @include respond-to(small){
       padding: 1rem 1rem 2rem 1rem;
     }
+    @include respond-to(medium){
+      padding: 1rem 1rem 4rem 1rem;
+    }
     header {
       font-family: $headingFont;
-      color: #000;
+      color: $darkColor;
       text-align: center;
       @include respond-to(small){
+        padding: 2rem 0 1rem 0;
+        font-size: 2.5rem;
+      }
+      @include respond-to(medium){
         padding: 2rem 0 1rem 0;
         font-size: 2.5rem;
       }
@@ -197,7 +218,7 @@ pane {
       height: 2px;
       display: none;
       width: 100%;
-      background-color: #ddd;
+      background-color: $lightGrey;
       margin: 1rem 0;
     }
     p {
@@ -280,7 +301,7 @@ pane.grid-2 {
         height: 5rem;
       }
       @include respond-to(medium){
-        padding: 2rem;
+        padding: 1rem;
         height: 6rem;
       }
       @include respond-to(large){
@@ -292,29 +313,37 @@ pane.grid-2 {
 }
 
 
-
 .grid-3 {
+  @include respond-to(medium){
+    item {
+      flex-grow: 2;
+      //height: 20rem;
+      //margin: 0 0 4rem 0;
+    }
+  }
   @include respond-to(large){
     item {
       flex-grow: 2;
       height: 20rem;
       margin: 0 0 4rem 0;
     }
-    :nth-child(1){
+    .donations {
         margin-right:1rem;
       }
-    :nth-child(2){
+    .signup {
         margin-left:1rem;
       }
   }
   @include respond-to(small){
-    :nth-child(2) {
+    .signup {
         padding-bottom: 4rem;
       }
   }
 }
 
-
+.signup {
+  background: linear-gradient(lighten($lightPurple, 10%),white);
+}
 
 p {
   margin-top: 0;
@@ -352,7 +381,7 @@ form#subscribe {
     width: 80%;
     border-radius: .25rem;
     background: white;
-    border: solid 1px #333;
+    border: solid 2px $lightGrey;
     box-shadow: none;
     -webkit-appearance: none;
     font-family: $baseFont;
@@ -362,8 +391,8 @@ form#subscribe {
       width: 60%;
     }
     &:focus{
-      border: solid 1px $purple;
-      outline: solid 1px $purple;
+      border: solid 2px $purple;
+      outline: 0px $purple;//rgba($purple);
     }
   }
 
@@ -499,3 +528,16 @@ form#subscribe {
 .flickity-prev-next-button.next {
   right: 0px;
 }
+
+
+// EMAIL
+#error {
+  color: rgb(117,7,0);
+}
+
+#success {
+  color: rgb(12,190,3);
+}
+
+
+//Footer

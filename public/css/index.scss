@@ -22,10 +22,15 @@
 
 //FONTS//
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
-$baseFont: 'Helvetica Neue', 'Helvetica', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400|Raleway|Sanchez');
+
+//$baseFont: 'Open Sans','Helvetica Neue', 'Helvetica', sans-serif;
+$baseFont: 'Montserrat','Helvetica Neue', 'Helvetica', sans-serif;
+$headingFont: 'Sacramento','Cinzel Decorative', cursive;
 
 //COLORS//
 $purple: #351254;
+$bodyFontColor: #666;
 
 $break-small: 600px;
 $break-large: 1024px;
@@ -44,79 +49,75 @@ $break-large: 1024px;
 
 
 body {
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    color: #666;
-    @include gradient($purple, #ddd);
+  padding: 0;
+  margin: 0;
+  font-family: $baseFont;
+  font-size: 16px;
+  line-height: 1.5rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $bodyFontColor;
+  @include gradient($purple, #ddd);
 }
 
 body > header {
-    // background-color: #351254;
-    color: white;
-    // font-family: 'Cinzel Decorative', cursive;
-    // padding: 1rem;
-    text-align: center;
-    // display: flex;
-    // width: 100%;
-    justify-content: center;
-    // .wrapper {
-    //     width:
-    //     display: flex;
-    //     align-items: center;
-    //     width: 100%;
-    // }
-    // .header-left {
-    //     width: 50%;
-    //     text-align: left;
-    //     font-size: 3em;
-    // }
-    // .header-right {
-    //     width: 50%;
-    //     text-align: right;
-    //     font-family: 'Open Sans', sans-serif;
-    //     font-size: 1rem;
-    // }
-    h1 {
-      font-family: 'Sacramento','Cinzel Decorative', cursive;
-      @include respond-to(medium){
-        font-size: 1rem;
-        line-height: .75rem;
-      }
-      @include respond-to(medium){
-        font-size:2rem;
-        line-height: 2.5rem;
-      }
-      @include respond-to(large){
-        font-size: 3rem;
-        line-height: 1rem;
-      }
-    }
+  padding: 1rem 0 1rem 0;
+  color: white;
+  text-align: center;
+  justify-content: center;
 
-    h2 {
-      @include respond-to(small){
-        font-size: .5rem;
-        line-height: .5rem;
-      }
-      @include respond-to(medium){
-        font-size:1rem;
-        line-height: 1rem;
-      }
-      @include respond-to(large){
-        font-size: 1rem;
-        line-height: 1rem;
-      }
-    }
-    .top {
 
+  h1 {
+    font-family: $headingFont;
+    @include respond-to(small){
+      font-size: 1rem;
+      line-height: .75rem;
     }
-    .bottom {
+    @include respond-to(medium){
+      font-size:2rem;
+      line-height: 2.5rem;
+    }
+    @include respond-to(large){
+      font-size: 4rem;
+      line-height: 1rem;
+    }
+  }
 
+  h2 {
+    @include respond-to(small){
+      font-size: .5rem;
+      line-height: .5rem;
     }
+    @include respond-to(medium){
+      font-size: 1rem;
+      line-height: 1rem;
+    }
+    @include respond-to(large){
+      font-size: 1rem;
+      line-height: 1rem;
+    }
+  }
+
+  h1, h2 {
+    font-weight: 300;
+  }
+
+  .top {
+    text-transform: uppercase;
+    @include respond-to(large){
+      line-height: .5rem;
+      letter-spacing: .1rem;
+    }
+  }
+  .bottom {
+    @include respond-to(large){
+      font-size: 1.25rem;
+      margin-top: -1rem;
+    }
+  }
+
 }
 
 content {
@@ -144,39 +145,41 @@ pane {
   width: 100%;
   &.connected {
     background-color: white;
-    border-radius: .5rem;
+    //border-radius: .5rem;
   }
+
   item {
     display: flex;
-  }
-  // &.grid-3 item {
-  item {
-      align-items: center;
-      flex-direction: column;
-      background-color: white;
-      padding: 1rem;
-      divider {
-          height: 1px;
-          //display: block;
-          display: none;
-          width: 100%;
-          background-color: #ddd;
-          margin: 1rem 0;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    padding: 1rem;
+    header {
+      font-family: $headingFont;
+      color: #000;
+      text-align: center;
+      @include respond-to(large){
+        padding: 2rem 0 1rem 0;
+        font-size: 3rem;
       }
-      header {
-          padding: .5rem 0 .5rem 0;
-          font-family: 'Sacramento','Cinzel Decorative', cursive;
-          font-size: 2rem;
-          color: #000;
-          text-align: center;
+    }
+    divider {
+      height: 2px;
+      display: none;
+      width: 100%;
+      background-color: #ddd;
+      margin: 1rem 0;
+    }
+    p {
+      text-align: center;
+      @include respond-to(large){
+        max-width: 23rem;
       }
-      p {
-        text-align: center;
-      }
+    }
   }
   item.purple {
     color: white;
-    background-color: #351254;
+    @include gradient($purple, desaturate(lighten($purple, 10%), 10%));
       header {
         color: white;
       }
@@ -190,7 +193,7 @@ pane.grid-2 {
   justify-content: flex-start;
   align-items: flex-start;
   @include respond-to(large){
-    margin-bottom: 2rem;
+    margin: 0 0 2rem 0;
   }
   &>* {
     box-sizing: border-box;
@@ -216,6 +219,7 @@ pane.grid-2 {
 
     header {
       @include respond-to(large) {
+        padding: 3rem 0 0 0;
         font-size: 3rem;
       }
     }
@@ -223,41 +227,70 @@ pane.grid-2 {
     divider {
       @include respond-to(large) {
         display: inline-block;
-        margin: 0rem 0 1.5rem 0;
+        margin: 1.5rem 0 1.5rem 0;
         width: 50%;
       }
     }
 
     p {
+      @include respond-to(large){
+        max-width: 23rem;
+      }
       max-width: 32rem;
+    }
+
+    .heart {
+      @include respond-to(small){
+        padding: 2rem;
+        height: 6rem;
+      }
+      @include respond-to(medium){
+        padding: 2rem;
+        height: 6rem;
+      }
+      @include respond-to(large){
+        padding: 2rem;
+        height: 6rem;
+      }
     }
   }
 }
+
+// .grid-3 {
+//   :nth-child(1){
+//     @include respond-to(large){
+//       margin-right:.5rem;
+//     }
+//   }
+//   :nth-child(2){
+//     @include respond-to(large){
+//       margin-left:.5rem;
+//     }
+//   }
+// }
+
+
+.grid-3 {
+  @include respond-to(large){
+    item {
+      flex-grow: 2;
+      height: 20rem;
+      margin: 0 0 4rem 0;
+    }
+    :nth-child(1){
+        margin-right:1rem;
+      }
+    :nth-child(2){
+        margin-left:1rem;
+      }
+  }
+}
+
 
 p {
   margin-top: 0;
   margin-bottom: 1em;
 }
-
-// #slideshow ul {
-//   margin: 0px;
-//   padding: 0px;
-//   list-style-type: none;
-// }
-//
-// #slideshow img {
-//   width: 100%;
-//   @include respond-to(large){
-//     width: 800px;
-//   }
-// }
-//
-// #slideshow {
-//   @include respond-to(large){
-//     width: 850px;
-//     height: 650px;
-//   }
-// }
 
 .hidden {
   display: none;
@@ -277,6 +310,7 @@ a.donate {
   text-transform: uppercase;
 }
 
+// FORM //
 form#subscribe {
   display: flex;
   flex-direction: column;
@@ -285,14 +319,17 @@ form#subscribe {
 
   input[type=email]{
     display: inline-block;
-    margin: 1rem 0 1rem 0;
-    width: 80%;// 75px;
+    margin: 0rem 0 1rem 0;
     height: 2rem;
+    width: 80%;
     border-radius: 1rem;
     background: white;
     border: solid 1px $purple;
     font-size: 1rem;
     padding: 0 1rem 0 1rem;
+    @include respond-to(large){
+      width: 60%;// 75px;
+    }
   }
 
   input[type=email]::placeholder {
@@ -302,12 +339,9 @@ form#subscribe {
     }
   }
 
-
   input[type=submit]{
     display: inline-block;
-    //width: 4rem;
-    //margin: 1rem 0 1rem 0;
-    padding: 16px 38px 16px 38px;// 75px;
+    padding: 16px 38px 16px 38px;
     border-radius: 2rem;
     background: $purple;
     color: white;
@@ -327,7 +361,7 @@ form#subscribe {
 
 }
 
-//CAROUSEL
+// CAROUSEL //
 #carousel {
   @include respond-to(small){
     width: 100%;
@@ -342,8 +376,6 @@ form#subscribe {
     width: calc(66% - 2rem);
     height: 36rem;
   }
-  // width: 900px;
-  // height: 700px;
 }
 
 .flickity-page-dots {

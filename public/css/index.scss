@@ -161,6 +161,7 @@ pane {
           margin: 1rem 0;
       }
       header {
+          padding: .5rem 0 .5rem 0;
           font-family: 'Sacramento','Cinzel Decorative', cursive;
           font-size: 2rem;
           color: #000;
@@ -198,11 +199,16 @@ pane.grid-2 {
     }
   }
   .info-container {
-    display: block;
+    display: flex;
+    flex-grow: 1;
+    align-content: center;
     padding: 1rem;
-      @include respond-to(large) {
-        width: 33%;
-      }
+    @include respond-to(large) {
+      width: 33%;
+    }
+    p {
+      max-width: 32rem;
+    }
   }
 }
 
@@ -258,12 +264,13 @@ form#subscribe {
   input[type=email]{
     display: inline-block;
     margin: 1rem 0 1rem 0;
-    width: 90%;// 75px;
+    width: 80%;// 75px;
     height: 2rem;
     border-radius: 1rem;
     background: white;
     border: solid 1px $purple;
     font-size: 1rem;
+    padding: 0 1rem 0 1rem;
   }
 
   input[type=email]::placeholder {

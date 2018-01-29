@@ -1,3 +1,5 @@
+@import "normalize";
+
 @mixin gradient($from, $to) {
   background-color: $from;
   background-image: -moz-linear-gradient($from, $to);
@@ -17,6 +19,10 @@
     box-shadow: $top $left $blur $color;
   }
 }
+
+//FONTS//
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+$baseFont: 'Helvetica Neue', 'Helvetica', sans-serif;
 
 //COLORS//
 $purple: #351254;
@@ -76,7 +82,7 @@ body > header {
     //     font-size: 1rem;
     // }
     h1 {
-      font-family: 'Cinzel Decorative', cursive;
+      font-family: 'Sacramento','Cinzel Decorative', cursive;
       @include respond-to(medium){
         font-size: 1rem;
         line-height: .75rem;
@@ -87,7 +93,7 @@ body > header {
       }
       @include respond-to(large){
         font-size: 3rem;
-        line-height: 2rem;
+        line-height: 1rem;
       }
     }
 
@@ -102,7 +108,7 @@ body > header {
       }
       @include respond-to(large){
         font-size: 1rem;
-        line-height: 1.5rem;
+        line-height: 1rem;
       }
     }
     .top {
@@ -148,14 +154,15 @@ pane {
       padding: 1rem;
       divider {
           height: 1px;
-          display: block;
+          //display: block;
+          display: none;
           width: 100%;
           background-color: #ddd;
           margin: 1rem 0;
       }
       header {
-          font-family: 'Cinzel Decorative', cursive;
-          font-size: 1.5em;
+          font-family: 'Sacramento','Cinzel Decorative', cursive;
+          font-size: 2rem;
           color: #000;
           text-align: center;
       }
@@ -235,6 +242,7 @@ a.donate {
   border-radius: 2rem;
   background: white;// url(https://d1iczxrky3cnb2.cloudfront.net/red_logo.png) no-repeat 37px center;
   color: $purple;
+  font-family: $baseFont;
   font-size: 16px;
   //font-weight: bold;
   text-decoration: none;
@@ -274,6 +282,7 @@ form#subscribe {
     border-radius: 2rem;
     background: $purple;
     color: white;
+    font-family: $baseFont;
     font-size: 16px;
     //font-weight: bold;
     text-decoration: none;
@@ -282,6 +291,11 @@ form#subscribe {
     border: none;
     cursor: pointer;
   }
+
+  input:disabled, input[disabled] {
+    opacity: .2;
+  }
+
 }
 
 #carousel {

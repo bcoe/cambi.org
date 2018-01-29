@@ -77,8 +77,10 @@ body > header {
     // }
     h1 {
       font-family: 'Cinzel Decorative', cursive;
-      font-size: 1rem;
-      line-height: .75rem;
+      @include respond-to(medium){
+        font-size: 1rem;
+        line-height: .75rem;
+      }
       @include respond-to(medium){
         font-size:2rem;
         line-height: 2.5rem;
@@ -90,11 +92,13 @@ body > header {
     }
 
     h2 {
-      font-size: .5rem;
-      line-height: .5rem;
+      @include respond-to(small){
+        font-size: .5rem;
+        line-height: .5rem;
+      }
       @include respond-to(medium){
-        font-size:2rem;
-        line-height: 2.5rem;
+        font-size:1rem;
+        line-height: 1rem;
       }
       @include respond-to(large){
         font-size: 1rem;
@@ -136,7 +140,8 @@ pane {
   item {
     display: flex;
   }
-  &.grid-3 item {
+  // &.grid-3 item {
+  item {
       align-items: center;
       flex-direction: column;
       background-color: white;

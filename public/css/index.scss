@@ -18,6 +18,22 @@
   }
 }
 
+$break-small: 600px;
+$break-large: 1024px;
+
+@mixin respond-to($media) {
+  @if $media == small {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == large {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
+
 body {
     padding: 0;
     margin: 0;
@@ -27,33 +43,66 @@ body {
     align-items: center;
     flex-direction: column;
     color: #666;
+    @include gradient(#351254, #ddd);
 }
 
 body > header {
-    background-color: #351254;
+    // background-color: #351254;
     color: white;
-    font-family: 'Cinzel Decorative', cursive;
-    padding: 1rem;
+    // font-family: 'Cinzel Decorative', cursive;
+    // padding: 1rem;
     text-align: center;
-    display: flex;
-    width: 100%;
+    // display: flex;
+    // width: 100%;
     justify-content: center;
-    .wrapper {
-        max-width: 1200px;
-        display: flex;
-        align-items: center;
-        width: 100%;
+    // .wrapper {
+    //     width:
+    //     display: flex;
+    //     align-items: center;
+    //     width: 100%;
+    // }
+    // .header-left {
+    //     width: 50%;
+    //     text-align: left;
+    //     font-size: 3em;
+    // }
+    // .header-right {
+    //     width: 50%;
+    //     text-align: right;
+    //     font-family: 'Open Sans', sans-serif;
+    //     font-size: 1rem;
+    // }
+    h1 {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 1rem;
+      line-height: .75rem;
+      @include respond-to(medium){
+        font-size:2rem;
+        line-height: 2.5rem;
+      }
+      @include respond-to(large){
+        font-size: 3rem;
+        line-height: 2rem;
+      }
     }
-    .header-left {
-        width: 50%;
-        text-align: left;
-        font-size: 3em;
-    }
-    .header-right {
-        width: 50%;
-        text-align: right;
-        font-family: 'Open Sans', sans-serif;
+
+    h2 {
+      font-size: .5rem;
+      line-height: .5rem;
+      @include respond-to(medium){
+        font-size:2rem;
+        line-height: 2.5rem;
+      }
+      @include respond-to(large){
         font-size: 1rem;
+        line-height: 1.5rem;
+      }
+    }
+    .top {
+
+    }
+    .bottom {
+
     }
 }
 
@@ -63,7 +112,6 @@ content {
     justify-content: center;
     align-items: center;
     width: 100%;
-    @include gradient(#351254, #ddd);
 }
 
 pane {
@@ -107,6 +155,10 @@ pane.grid-2 {
     }
     item:nth-child(2) {
         width: 33%;
+        display: none;
+        @include respond-to(large) {
+          display: block;
+        }
     }
 }
 

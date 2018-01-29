@@ -18,6 +18,9 @@
   }
 }
 
+//COLORS//
+$purple: #351254;
+
 $break-small: 600px;
 $break-large: 1024px;
 
@@ -43,7 +46,7 @@ body {
     align-items: center;
     flex-direction: column;
     color: #666;
-    @include gradient(#351254, #ddd);
+    @include gradient($purple, #ddd);
 }
 
 body > header {
@@ -107,91 +110,177 @@ body > header {
 }
 
 content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 pane {
+  display: flex;
+  @include respond-to(small){
+    flex-direction: column;
+  }
+  @include respond-to(medium){
+    flex-direction: row;
+  }
+  @include respond-to(large){
+    flex-direction: row;
+  }
+  width: 100%;
+  &.connected {
+    background-color: white;
+    border-radius: 3px;
+  }
+  item {
     display: flex;
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 1em;
-    &.connected {
-        background-color: white;
-        border-radius: 3px;
-    }
-    item {
-        border-radius: 3px;
-        background-color: white;
-        padding: 1rem;
-        &:first-child {
-            margin-left: 0;
-        }
-        margin-left: 1rem;
-        divider {
-            height: 1px;
-            display: block;
-            width: 100%;
-            background-color: #ddd;
-            margin: 1em 0;
-        }
-        header {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 1.5em;
-            color: #000;
-        }
-    }
+  }
+  &.grid-3 item {
+      align-items: center;
+      flex-direction: column;
+      background-color: white;
+      padding: 1rem;
+      divider {
+          height: 1px;
+          display: block;
+          width: 100%;
+          background-color: #ddd;
+          margin: 1rem 0;
+      }
+      header {
+          font-family: 'Cinzel Decorative', cursive;
+          font-size: 1.5em;
+          color: #000;
+          text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+  }
+  item:nth-of-type(2) {
+    color: white;
+    background-color: #351254;
+      header {
+        color: white;
+      }
+  }
 }
+
 
 pane.grid-2 {
-    item:nth-child(1) {
-        width: 70.5%;
-        img {
-            width: 100%;
-        }
+  item:nth-child(1) {
+    @include respond-to(large){
+      width: 70.5%;
+      img {
+          width: 100%;
+      }
     }
-    item:nth-child(2) {
+  }
+  item:nth-child(2) {
+      display: none;
+      @include respond-to(large) {
         width: 33%;
-        display: none;
-        @include respond-to(large) {
-          display: block;
-        }
-    }
+        display: block;
+      }
+  }
 }
 
-pane.grid-3 {
-    item:nth-child(1) {
-        width: 33%;
-    }
-    item:nth-child(2) {
-        width: 33%;
-    }
-    item:nth-child(3) {
-        width: 33%;
-    }
-}
+
+
+// pane.grid-3 {
+//     item:nth-child(1) {
+//         width: 33%;
+//     }
+//     item:nth-child(2) {
+//         width: 33%;
+//     }
+//     item:nth-child(3) {
+//         width: 33%;
+//     }
+// }
 
 p {
-    margin-top: 0;
-    margin-bottom: 1em;
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
 #slideshow ul {
+  margin: 0px;
+  padding: 0px;
   list-style-type: none;
 }
 
 #slideshow img {
-  width: 800px;
+  width: 100%;
+  @include respond-to(large){
+    width: 800px;
+  }
 }
 
 #slideshow {
-  width: 850px;
-  height: 650px;
+  @include respond-to(large){
+    width: 850px;
+    height: 650px;
+  }
 }
 
 .hidden {
   display: none;
+}
+
+a.donate {
+  display: inline-block;
+  margin: 1rem 0 1rem 0;
+  padding: 16px 38px 16px 38px;// 75px;
+  border-radius: 2rem;
+  background: white;// url(https://d1iczxrky3cnb2.cloudfront.net/red_logo.png) no-repeat 37px center;
+  color: $purple;
+  font-size: 16px;
+  //font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+form#subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  input[type=email]{
+    display: inline-block;
+    margin: 1rem 0 1rem 0;
+    width: 90%;// 75px;
+    height: 2rem;
+    border-radius: 1rem;
+    background: white;
+    border: solid 1px $purple;
+    font-size: 1rem;
+  }
+
+  input[type=email]::placeholder {
+    text-align: center;
+    &::focus {
+       opacity: 0;
+    }
+  }
+
+
+  input[type=submit]{
+    display: inline-block;
+    //width: 4rem;
+    //margin: 1rem 0 1rem 0;
+    padding: 16px 38px 16px 38px;// 75px;
+    border-radius: 2rem;
+    background: $purple;
+    color: white;
+    font-size: 16px;
+    //font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+  }
 }

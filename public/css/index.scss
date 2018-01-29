@@ -1,4 +1,6 @@
+// normailize.css fixes user agent stylesheets for annoying things like buttons, margins, etc
 @import "normalize";
+@import "flickity.min";
 
 @mixin gradient($from, $to) {
   background-color: $from;
@@ -20,16 +22,24 @@
   }
 }
 
-//FONTS//
+// FONTS //
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
-$baseFont: 'Helvetica Neue', 'Helvetica', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400|Raleway');
 
-//COLORS//
+$baseFont: 'Montserrat','Helvetica Neue', 'Helvetica', sans-serif;
+$headingFont: 'Sacramento','Cinzel Decorative', cursive, serif;
+
+// COLORS //
 $purple: #351254;
+$lightPurple: #e0bdff;
+$bodyFontColor: #666666;
+$lightGrey: #dddddd;
+$darkColor: #16161d;
 
 $break-small: 600px;
 $break-large: 1024px;
 
+// MEDIA QUERIES //
 @mixin respond-to($media) {
   @if $media == small {
     @media only screen and (max-width: $break-small) { @content; }
@@ -44,79 +54,102 @@ $break-large: 1024px;
 
 
 body {
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    color: #666;
-    @include gradient($purple, #ddd);
+  padding: 0;
+  margin: 0;
+  font-family: $baseFont;
+  font-size: 16px;
+  line-height: 1.5rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $bodyFontColor;
+  background: url('../images/349_1.png') top left repeat-x,
+              url('../images/223.png') top left repeat-x,
+              url('../images/821.png') top center repeat-x,
+              url('../images/563.png') top left repeat,
+              url('../images/659.png') top center repeat-x,
+              linear-gradient(darken($purple,2%), $lightPurple);
+  //background-attachment: fixed;
+  //background-position: left top;
+  //@include gradient($purple, #ddd);
 }
 
 body > header {
-    // background-color: #351254;
-    color: white;
-    // font-family: 'Cinzel Decorative', cursive;
-    // padding: 1rem;
-    text-align: center;
-    // display: flex;
-    // width: 100%;
-    justify-content: center;
-    // .wrapper {
-    //     width:
-    //     display: flex;
-    //     align-items: center;
-    //     width: 100%;
-    // }
-    // .header-left {
-    //     width: 50%;
-    //     text-align: left;
-    //     font-size: 3em;
-    // }
-    // .header-right {
-    //     width: 50%;
-    //     text-align: right;
-    //     font-family: 'Open Sans', sans-serif;
-    //     font-size: 1rem;
-    // }
-    h1 {
-      font-family: 'Sacramento','Cinzel Decorative', cursive;
-      @include respond-to(medium){
-        font-size: 1rem;
-        line-height: .75rem;
-      }
-      @include respond-to(medium){
-        font-size:2rem;
-        line-height: 2.5rem;
-      }
-      @include respond-to(large){
-        font-size: 3rem;
-        line-height: 1rem;
-      }
-    }
+  padding: 1rem 0 1rem 0;
+  @include respond-to(medium){
+    padding: 1rem 0 .5rem 0;
+  }
+  color: white;
+  text-align: center;
+  justify-content: center;
 
-    h2 {
-      @include respond-to(small){
-        font-size: .5rem;
-        line-height: .5rem;
-      }
-      @include respond-to(medium){
-        font-size:1rem;
-        line-height: 1rem;
-      }
-      @include respond-to(large){
-        font-size: 1rem;
-        line-height: 1rem;
-      }
-    }
-    .top {
 
+  h1 {
+    font-family: $headingFont;
+    @include respond-to(small){
+      font-size: 2.4rem;
+      line-height: 1rem;
     }
-    .bottom {
+    @include respond-to(medium){
+      font-size: 3rem;
+      line-height: 1rem;
+    }
+    @include respond-to(large){
+      font-size: 4rem;
+      line-height: 1rem;
+    }
+  }
 
+  h2 {
+    @include respond-to(small){
+      font-size: 1rem;
+      line-height: .5rem;
     }
+    @include respond-to(medium){
+      font-size: 1rem;
+      line-height: 1rem;
+    }
+    @include respond-to(large){
+      font-size: 1rem;
+      line-height: 1rem;
+    }
+  }
+
+  h1, h2 {
+    font-weight: 300;
+  }
+
+  .top {
+    text-transform: uppercase;
+    @include respond-to(small){
+      line-height: .5rem;
+      letter-spacing: .05rem;
+    }
+    @include respond-to(medium){
+      line-height: .5rem;
+      letter-spacing: .05rem;
+    }
+    @include respond-to(large){
+      line-height: .5rem;
+      letter-spacing: .1rem;
+    }
+  }
+  .bottom {
+    @include respond-to(small){
+      font-size: 1.1rem;
+      margin-top: -.5rem;
+    }
+    @include respond-to(medium){
+      font-size: 1.2rem;
+      margin-top: -.75rem;
+    }
+    @include respond-to(large){
+      font-size: 1.25rem;
+      margin-top: -1rem;
+    }
+  }
+
 }
 
 content {
@@ -126,7 +159,11 @@ content {
   align-items: center;
   width: 100%;
   @include respond-to(large){
-    width: 80rem;
+    //width: 80rem; // FIXED
+    max-width: 78rem; // FLUID
+    //max-width: calc(100vw - 8rem); // FLUID
+    //margin: 0 5% 0 5%;
+
   }
 }
 
@@ -144,39 +181,58 @@ pane {
   width: 100%;
   &.connected {
     background-color: white;
-    border-radius: .5rem;
+    //border-radius: .5rem;
   }
+
   item {
     display: flex;
-  }
-  // &.grid-3 item {
-  item {
-      align-items: center;
-      flex-direction: column;
-      background-color: white;
-      padding: 1rem;
-      divider {
-          height: 1px;
-          //display: block;
-          display: none;
-          width: 100%;
-          background-color: #ddd;
-          margin: 1rem 0;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    //background: linear-gradient(lighten($lightPurple, 10%),white);
+    padding: 1rem;
+    @include respond-to(small){
+      padding: 1rem 1rem 2rem 1rem;
+    }
+    @include respond-to(medium){
+      padding: 1rem 1rem 4rem 1rem;
+    }
+    header {
+      font-family: $headingFont;
+      color: $darkColor;
+      text-align: center;
+      @include respond-to(small){
+        padding: 2rem 0 1rem 0;
+        font-size: 2.5rem;
       }
-      header {
-          padding: .5rem 0 .5rem 0;
-          font-family: 'Sacramento','Cinzel Decorative', cursive;
-          font-size: 2rem;
-          color: #000;
-          text-align: center;
+      @include respond-to(medium){
+        padding: 2rem 0 1rem 0;
+        font-size: 2.5rem;
       }
-      p {
-        text-align: center;
+      @include respond-to(large){
+        padding: 2rem 0 1rem 0;
+        font-size: 3rem;
       }
+    }
+    divider {
+      height: 2px;
+      display: none;
+      width: 100%;
+      background-color: $lightGrey;
+      margin: 1rem 0;
+    }
+    p {
+      text-align: center;
+      max-width: 23rem;
+
+      // @include respond-to(large){
+      //   max-width: 23rem;
+      // }
+    }
   }
   item.purple {
     color: white;
-    background-color: #351254;
+    @include gradient($purple, desaturate(lighten($purple, 10%), 10%));
       header {
         color: white;
       }
@@ -190,7 +246,7 @@ pane.grid-2 {
   justify-content: flex-start;
   align-items: flex-start;
   @include respond-to(large){
-    margin-bottom: 2rem;
+    margin: 0 0 2rem 0;
   }
   &>* {
     box-sizing: border-box;
@@ -216,48 +272,83 @@ pane.grid-2 {
 
     header {
       @include respond-to(large) {
+        padding: 3rem 0 0 0;
         font-size: 3rem;
+        line-height: 3rem;
       }
     }
 
     divider {
       @include respond-to(large) {
         display: inline-block;
-        margin: 0rem 0 1.5rem 0;
+        margin: 1.5rem 0 1.5rem 0;
         width: 50%;
       }
     }
 
     p {
-      max-width: 32rem;
+      @include respond-to(medium){
+        max-width: 32rem;
+      }
+      @include respond-to(large){
+        max-width: 23rem;
+      }
+    }
+
+    .heart {
+      @include respond-to(small){
+        padding: 1rem;
+        height: 5rem;
+      }
+      @include respond-to(medium){
+        padding: 1rem;
+        height: 6rem;
+      }
+      @include respond-to(large){
+        padding: 2rem;
+        height: 6rem;
+      }
     }
   }
+}
+
+
+.grid-3 {
+  @include respond-to(medium){
+    item {
+      flex-grow: 2;
+      //height: 20rem;
+      //margin: 0 0 4rem 0;
+    }
+  }
+  @include respond-to(large){
+    item {
+      flex-grow: 2;
+      height: 20rem;
+      margin: 0 0 4rem 0;
+    }
+    .donations {
+        margin-right:1rem;
+      }
+    .signup {
+        margin-left:1rem;
+      }
+  }
+  @include respond-to(small){
+    .signup {
+        padding-bottom: 4rem;
+      }
+  }
+}
+
+.signup {
+  background: linear-gradient(lighten($lightPurple, 10%),white);
 }
 
 p {
   margin-top: 0;
   margin-bottom: 1em;
 }
-
-// #slideshow ul {
-//   margin: 0px;
-//   padding: 0px;
-//   list-style-type: none;
-// }
-//
-// #slideshow img {
-//   width: 100%;
-//   @include respond-to(large){
-//     width: 800px;
-//   }
-// }
-//
-// #slideshow {
-//   @include respond-to(large){
-//     width: 850px;
-//     height: 650px;
-//   }
-// }
 
 .hidden {
   display: none;
@@ -266,17 +357,17 @@ p {
 a.donate {
   display: inline-block;
   margin: 1rem 0 1rem 0;
-  padding: 16px 38px 16px 38px;// 75px;
+  padding: 16px 38px 16px 38px;
   border-radius: 2rem;
-  background: white;// url(https://d1iczxrky3cnb2.cloudfront.net/red_logo.png) no-repeat 37px center;
+  background: white;
   color: $purple;
   font-family: $baseFont;
   font-size: 16px;
-  //font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
 }
 
+// FORM //
 form#subscribe {
   display: flex;
   flex-direction: column;
@@ -285,29 +376,38 @@ form#subscribe {
 
   input[type=email]{
     display: inline-block;
-    margin: 1rem 0 1rem 0;
-    width: 80%;// 75px;
+    margin: 0rem 0 1rem 0;
     height: 2rem;
-    border-radius: 1rem;
+    width: 80%;
+    border-radius: .25rem;
     background: white;
-    border: solid 1px $purple;
+    border: solid 2px $lightGrey;
+    box-shadow: none;
+    -webkit-appearance: none;
+    font-family: $baseFont;
     font-size: 1rem;
-    padding: 0 1rem 0 1rem;
+    padding: 0 .5rem 0 .5rem;
+    @include respond-to(large){
+      width: 60%;
+    }
+    &:focus{
+      border: solid 2px $purple;
+      outline: 0px $purple;//rgba($purple);
+    }
   }
 
   input[type=email]::placeholder {
+    padding-top: .1rem;
+    font-weight: 300;
     text-align: center;
     &::focus {
        opacity: 0;
     }
   }
 
-
   input[type=submit]{
     display: inline-block;
-    //width: 4rem;
-    //margin: 1rem 0 1rem 0;
-    padding: 16px 38px 16px 38px;// 75px;
+    padding: 16px 38px 16px 38px;
     border-radius: 2rem;
     background: $purple;
     color: white;
@@ -327,7 +427,8 @@ form#subscribe {
 
 }
 
-//CAROUSEL
+
+//// FLIKITY CAROUSEL ////
 #carousel {
   @include respond-to(small){
     width: 100%;
@@ -342,15 +443,134 @@ form#subscribe {
     width: calc(66% - 2rem);
     height: 36rem;
   }
-  // width: 900px;
-  // height: 700px;
-}
-
-.flickity-page-dots {
-  display: none;
-  //bottom: 10px;
 }
 
 .carousel-cell, .carousel-cell-image {
+  // width: 100%;
+  @include respond-to(small){
+    width: 100%;
+  }
+  @include respond-to(medium){
+    width: 100%;
+    margin-top: calc(-1 * 5vw);
+  }
+  @include respond-to(large){
+    height: 105%;
+  }
+}
+
+// Adjust dot position
+.flickity-page-dots {
+  bottom: 1rem;
+  // @include respond-to(medium){
+  //   display: none;
+  // }
+  // @include respond-to(large){
+  //   display: none;
+  // }
+}
+
+.flickity-page-dots .dot {
+  height: .5rem;
+  width: .5rem;
+  //margin: 0;
+  border-radius: .5rem;
+  background: rgba(255,255,255,.5);
+}
+
+// Fill-in selected dot
+.flickity-page-dots .dot.is-selected {
+  background: rgba(255,255,255,.8);
+}
+
+// Style < > buttons
+.flickity-prev-next-button,
+.flickity-prev-next-button:focus {
+  width: 2rem;
+  height: 6rem;
+  background: rgba(255,255,255,.2);
+  @include respond-to(small){
+    width: 1.5rem;
+    height: 4rem;
+  }
+  &.previous {
+    @include respond-to(small){
+      border-radius: 0 .5rem .5rem 0;
+    }
+    border-radius: 0 1rem 1rem 0;
+  }
+  &.next {
+    @include respond-to(small){
+      border-radius: .5rem 0 0 .5rem;
+    }
+    border-radius: 1rem 0 0 1rem;
+  }
+  &:hover {
+    background: rgba(255,255,255,.5)
+  }
+  &:active {
+    background: rgba(255,255,255,.8)
+  }
+}
+
+// Arrow color
+.flickity-prev-next-button .arrow {
+  fill: white;
+}
+.flickity-prev-next-button.no-svg {
+  color: white;
+}
+
+// Position buttons
+.flickity-prev-next-button.previous {
+  left: 0px;
+}
+.flickity-prev-next-button.next {
+  right: 0px;
+}
+
+
+// EMAIL
+#error {
+  color: rgb(117,7,0);
+}
+
+#success {
+  color: rgb(12,190,3);
+}
+
+
+//Footer
+footer {
   width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  //margin: 0;
+  p {
+    color: $purple;
+    font-family: $headingFont;
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding: 6rem 1rem 2rem 1rem;
+    //margin: 0;
+    text-align: center;
+  }
+}
+
+footer:before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+  background:   url('../images/349_1.png') top left repeat-x,
+                url('../images/223.png') top left repeat-x,
+                url('../images/821.png') top center repeat-x,
+                url('../images/563.png') top left repeat-x,
+                url('../images/659.png') top center repeat-x;//,
+                //linear-gradient(darken($purple,2%), rgba($purple,0));
+  transform: rotate(180deg);
 }

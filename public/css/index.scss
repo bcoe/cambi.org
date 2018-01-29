@@ -65,10 +65,12 @@ body {
   flex-direction: column;
   color: $bodyFontColor;
   background: url('../images/349_1.png') top left repeat-x,
+              url('../images/223.png') top left repeat-x,
               url('../images/821.png') top center repeat-x,
               url('../images/563.png') top left repeat,
               url('../images/659.png') top center repeat-x,
-              linear-gradient(darken($purple,2%), $lightPurple);
+              linear-gradient(darken($purple,2%), #ffebda);
+              //linear-gradient(darken($purple,2%), $lightPurple);
   //background-attachment: fixed;
   //background-position: left top;
   //@include gradient($purple, #ddd);
@@ -136,7 +138,8 @@ body > header {
   }
   .bottom {
     @include respond-to(small){
-      font-size: 1.1rem;
+      font-size: 1rem; // Long text
+      //font-size: 1.1rem; Default
       margin-top: -.5rem;
     }
     &::first-line {
@@ -540,11 +543,17 @@ form#subscribe {
 
 // EMAIL
 #error {
-  color: rgb(117,7,0);
+  color: rgb(196,12,0);
 }
 
 #success {
   color: rgb(12,190,3);
+}
+
+#error, #success {
+  padding-top: 1rem;
+  text-align: center;
+  max-width: 23rem;
 }
 
 
@@ -556,13 +565,19 @@ footer {
   overflow-y: hidden;
   //margin: 0;
   p {
-    color: $purple;
+    color: adjust-hue($purple, 90deg);
     font-family: $headingFont;
     font-size: 1.25rem;
     font-weight: 400;
     padding: 6rem 1rem 2rem 1rem;
     //margin: 0;
     text-align: center;
+    br {
+      display: none;
+      @include respond-to(small) {
+        display: inline;
+      }
+    }
   }
 }
 
@@ -575,8 +590,10 @@ footer:before {
   left: -50%;
   z-index: -1;
   background:   url('../images/349_1.png') top left repeat-x,
+                url('../images/223.png') top left repeat-x,
                 url('../images/821.png') top center repeat-x,
                 url('../images/563.png') top left repeat-x,
                 url('../images/659.png') top center repeat-x;//,
+                //linear-gradient(darken($purple,2%), rgba($purple,0));
   transform: rotate(180deg);
 }

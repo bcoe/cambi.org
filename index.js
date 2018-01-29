@@ -17,10 +17,12 @@ app.post('/subscribe', (req, res) => {
     email_address: req.body.email,
     status: 'subscribed'
   })
-  .catch(function (err) {
-    console.error(err.message)
+  .then(() => {
+    res.send('ok')
   })
-  res.redirect('/')
+  .catch(function (err) {
+    res.status(500).send(err.message)
+  })
 })
 
 app.listen(port, () => console.log(`Cambi's celebration running on ${port}`))

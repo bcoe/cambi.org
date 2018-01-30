@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/bcoe/cambi.org/compare/v1.4.0...v1.6.0) (2018-01-30)
+
+
+### Bug Fixes
+
+* add browser-sync dependency ([1add329](https://github.com/bcoe/cambi.org/commit/1add329))
+* add family ([f7d8f49](https://github.com/bcoe/cambi.org/commit/f7d8f49))
+* address missing files ([81e0191](https://github.com/bcoe/cambi.org/commit/81e0191))
+* better crop of image ([3279493](https://github.com/bcoe/cambi.org/commit/3279493))
+* better loading image ([8814f04](https://github.com/bcoe/cambi.org/commit/8814f04))
+* dateline spaces lines correctly on mobile ([#17](https://github.com/bcoe/cambi.org/issues/17)) ([4ebe383](https://github.com/bcoe/cambi.org/commit/4ebe383))
+* don't be fancy with loading image ([264cea4](https://github.com/bcoe/cambi.org/commit/264cea4))
+* email validation should handle paste events ([#12](https://github.com/bcoe/cambi.org/issues/12)) ([d66ed83](https://github.com/bcoe/cambi.org/commit/d66ed83))
+* image was overwritten ([a4424b7](https://github.com/bcoe/cambi.org/commit/a4424b7))
+* restyling things to look closer to vision in mockups ([#8](https://github.com/bcoe/cambi.org/issues/8)) ([c641859](https://github.com/bcoe/cambi.org/commit/c641859))
+* switch to better loading image ([a900a3c](https://github.com/bcoe/cambi.org/commit/a900a3c))
+* switch to lazy loading images ([a81072d](https://github.com/bcoe/cambi.org/commit/a81072d))
+
+
+### Features
+
+* add a ton more photos ([#20](https://github.com/bcoe/cambi.org/issues/20)) ([aa0d414](https://github.com/bcoe/cambi.org/commit/aa0d414))
+* add browser-sync for faster iteration ([#9](https://github.com/bcoe/cambi.org/issues/9)) ([e8058ba](https://github.com/bcoe/cambi.org/commit/e8058ba))
+* adding more images to site ([#19](https://github.com/bcoe/cambi.org/issues/19)) ([e6d5b7f](https://github.com/bcoe/cambi.org/commit/e6d5b7f))
+* disable/enable subscribe button when email is valid or invalid ([#10](https://github.com/bcoe/cambi.org/issues/10)) ([f7bf2ca](https://github.com/bcoe/cambi.org/commit/f7bf2ca))
+* switch to flickity for gallery ([#14](https://github.com/bcoe/cambi.org/issues/14)) ([cfdf6a0](https://github.com/bcoe/cambi.org/commit/cfdf6a0))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/bcoe/cambi.org/compare/v1.3.0...v1.5.0) (2018-01-29)
 
